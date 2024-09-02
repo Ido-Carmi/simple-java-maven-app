@@ -10,7 +10,6 @@ terraform {
     bucket         = "idoterraformido"
     key            = "terraformactions.tfstate"
     region         = "ap-northeast-1"
-    dynamodb_table = "terraform_state"
   }
 }
 data "aws_ami" "ubuntu" {
