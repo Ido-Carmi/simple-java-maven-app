@@ -2,6 +2,7 @@ FROM ubuntu:oracular AS brick
 RUN apt update -y
 RUN apt install -y git maven curl
 RUN git clone -b master https://github.com/Ido-Carmi/simple-java-maven-app.git
+WORKDIR simple-java-maven-app
 RUN ls
 RUN mvn clean verify -f pom.xml
 #FROM openjdk:24-slim
