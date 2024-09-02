@@ -80,6 +80,8 @@ jobs:
       - name: Terraform Apply
         id:   apply
         run:
+          ls &&
+          pwd &&
           cd .. &&
           terraform init &&
           terraform validate &&
