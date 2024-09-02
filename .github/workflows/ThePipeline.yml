@@ -59,6 +59,11 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_wrapper: false
+      - name: Terraform DynamoDB
+        id:   DynamoDB
+        run:
+          terraform init &&
+          terraform apply -auto-approve DynamoDB.tf
       - name: Terraform Apply
         id:   apply
         run:
