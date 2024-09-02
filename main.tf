@@ -4,8 +4,7 @@ data "aws_ami" "ubuntu" {
         name   = "name"
         values = ["ubuntu/images/hvm-ssd/*24.04-amd64-server-*"]
     }
-    filter
-    {
+    filter {
         name   = "virtualization-type"
         values = ["hvm"]
     }
