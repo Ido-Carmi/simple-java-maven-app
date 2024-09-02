@@ -62,8 +62,8 @@ jobs:
       - name: Terraform Apply
         id:   apply
         run:
-          terraform init
-          terraform validate
-          terraform plan 
+          terraform init &&
+          terraform validate &&
+          terraform plan &&
           terraform apply -auto-approve
         
