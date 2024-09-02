@@ -86,7 +86,7 @@ resource "aws_instance" "app_server" {
   user_data = <<EOF
 #!/bin/bash
 sudo apt update -y
-sudo install -y docker.io
+sudo -y install docker.io
 sudo docker run -d idoca/actions:latest
 EOF
 }
