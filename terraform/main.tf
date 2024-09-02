@@ -12,6 +12,53 @@ terraform {
     region         = "ap-northeast-1"
   }
 }
+variable "sg" {
+  type = map(object({
+    port = number
+    cidr = list(string)
+    description = string
+  }))
+  
+  default = {
+    "ssh" = {
+     	port = 22
+    	cidr = ["0.0.0.0/0"]
+    	description = "ssh yeah"
+    },
+    "http" = {
+     	port = 80
+    	cidr = ["0.0.0.0/0"]
+    	description = "http yeah"
+    },
+    "https" = {
+     	port = 443
+    	cidr = ["0.0.0.0/0"]
+    	description = "https yeah"
+    }
+  }
+}
+resource "aws_security_group" "the_sg" {
+  name        = "the new sg"
+  description = "Security Group for life!"
+
+  dynamic "ingress" {
+    for_each = var.sg
+
+    content {
+      from_port   = ingress.value.port
+      to_port     = ingress.value.port
+      protocol    = "tcp"
+      cidr_blocks = ingress.value.cidr
+      description = ingress.value.description
+    }
+  }
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+}
 data "aws_ami" "ubuntu" {
     most_recent = true
     filter {
@@ -32,6 +79,7 @@ resource "aws_instance" "app_server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   key_name      = "keys"
+  vpc_security_group_ids =[aws_security_group.the_sg.id]
   tags = {
     Name = "actions"
   }
