@@ -62,16 +62,23 @@ jobs:
       - name: Terraform DynamoDB
         id:   DynamoDB
         run:
+          cd /terraform/dynamodb/
           terraform init &&
+          terraform validate &&
+          terraform plan &&
           terraform apply -auto-approve DynamoDB.tf
       - name: Terraform s3
         id:   s3
         run:
+          cd /terraform/s3/
           terraform init &&
+          terraform validate &&
+          terraform plan &&
           terraform apply -auto-approve s3.tf
       - name: Terraform Apply
         id:   apply
         run:
+          cd terraform/
           terraform init &&
           terraform validate &&
           terraform plan &&
