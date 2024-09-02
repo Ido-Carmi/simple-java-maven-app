@@ -62,6 +62,7 @@ jobs:
       - name: Terraform DynamoDB
         id:   DynamoDB
         run:
+          ls &&
           cd /terraform/dynamodb/ &&
           terraform init &&
           terraform validate &&
