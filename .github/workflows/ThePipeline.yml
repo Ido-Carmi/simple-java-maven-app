@@ -63,7 +63,7 @@ jobs:
         id:   DynamoDB
         run:
           ls &&
-          cd /terraform/dynamodb/ &&
+          cd terraform/dynamodb/ &&
           terraform init &&
           terraform validate &&
           terraform plan &&
@@ -71,7 +71,7 @@ jobs:
       - name: Terraform s3
         id:   s3
         run:
-          cd /terraform/s3/ &&
+          cd ../s3/ &&
           terraform init &&
           terraform validate &&
           terraform plan &&
@@ -79,7 +79,7 @@ jobs:
       - name: Terraform Apply
         id:   apply
         run:
-          cd terraform/ &&
+          cd .. &&
           terraform init &&
           terraform validate &&
           terraform plan &&
