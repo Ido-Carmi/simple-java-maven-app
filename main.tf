@@ -8,7 +8,7 @@ terraform {
   required_version = ">= 1.2.0"
   backend "s3" {
     bucket         = "idoterraformido"
-    key            = "terraform.tfstate"
+    key            = "terraformactions.tfstate"
     region         = "ap-northeast-1"
     dynamodb_table = "terraform_state"
   }
