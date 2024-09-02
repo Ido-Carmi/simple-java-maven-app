@@ -35,4 +35,10 @@ resource "aws_instance" "app_server" {
   tags = {
     Name = "actions"
   }
+  user_data = <<EOF
+#!/bin/bash
+sudo apt update -y
+sudo install -y docker.io
+sudo docker run -d idoca/actions:latest
+EOF
 }
