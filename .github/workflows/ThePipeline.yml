@@ -62,8 +62,6 @@ jobs:
       - name: Terraform Apply
         id:   apply
         run:
-          ls &&
-          pwd &&
           cd terraform/ &&
           terraform init &&
           terraform validate &&
