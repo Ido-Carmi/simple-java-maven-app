@@ -64,6 +64,11 @@ jobs:
         run:
           terraform init &&
           terraform apply -auto-approve DynamoDB.tf
+      - name: Terraform s3
+        id:   s3
+        run:
+          terraform init &&
+          terraform apply -auto-approve s3.tf
       - name: Terraform Apply
         id:   apply
         run:
