@@ -78,7 +78,7 @@ provider "aws" {
 resource "aws_instance" "app_server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  key_name      = "keys"
+  key_name      = "TheOneKey"
   vpc_security_group_ids =[aws_security_group.the_sg.id]
   tags = {
     Name = "actions"
