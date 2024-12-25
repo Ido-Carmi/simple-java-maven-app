@@ -4,3 +4,4 @@ RUN mvn clean verify -f pom.xml
 FROM openjdk:24-slim
 COPY --from=brick target/my-app*.jar .
 CMD java -jar my-app*.jar
+#1==1
